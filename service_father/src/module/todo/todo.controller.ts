@@ -6,10 +6,8 @@ import {
   Patch,
   Param,
   Delete,
-  UseGuards,
 } from '@nestjs/common';
 import { TodoService } from './todo.service';
-import { CreateTodoDto } from './dto/create-todo.dto';
 import { UpdateTodoDto } from './dto/update-todo.dto';
 
 //@UseGuards(JwtAuthGuard)
@@ -18,8 +16,8 @@ export class TodoController {
   constructor(private readonly todoService: TodoService) {}
 
   @Post() // acesso all
-  create(@Body() createTodoDto: CreateTodoDto) {
-    return this.todoService.create(createTodoDto);
+  create() {
+    return this.todoService.create();
   }
 
   @Get()
