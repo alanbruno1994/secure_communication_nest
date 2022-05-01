@@ -1,0 +1,18 @@
+version: '3.7'
+services:
+  app_children:
+    entrypoint: .docker/exec_dev/entrypoint.sh
+    build:
+      context: .docker/exec_dev/
+      dockerfile: Dockerfile
+    container_name: children
+    ports:
+      - 3333:3333
+    volumes:
+      - .:/home/node/app
+    networks:
+      - proxynet
+networks:
+  proxynet:
+    external:
+      name: custom_network
